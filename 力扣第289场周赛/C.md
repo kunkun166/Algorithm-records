@@ -13,8 +13,7 @@
 
 
 <font size=2>示例 1：</font>
-
-
+![hh](https://github.com/kunkun166/Algorithm-records/blob/leetcodecup/%E6%8F%92%E5%9B%BE/01.png)
 ```
 输入：grid = [[23,17,15,3,20],[8,1,20,27,11],[9,4,6,2,21],[40,9,1,10,6],[22,7,4,5,3]]
 输出：3
@@ -27,7 +26,7 @@
 ```
 
 <font size=2>示例 2：</font>
-
+![hh](https://github.com/kunkun166/Algorithm-records/blob/leetcodecup/%E6%8F%92%E5%9B%BE/02.png)
 ```
 输入：grid = [[4,3,2],[7,6,1],[8,8,8]]
 输出：0
