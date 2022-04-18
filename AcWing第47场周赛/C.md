@@ -6,18 +6,18 @@
 
 ### 题目描述
 
-<font size=2> 有一个长度为 k 的整数数组 x0, x1, … , xk−1。<br>不幸的是，这个数组已经丢失了，我们甚至不知道 k 的具体值。<br>幸运的是，我们找到了另一个利用数组 x 生成的长度为 n + 1 的数组 a0, a1, … , an。<br>数组 a 的正式描述如下：</font>
+<font size=2> 有一个长度为 k 的整数数组 x0, x1, … , xk−1。<br>不幸的是，这个数组已经丢失了，我们甚至不知道 k 的具体值。<br>幸运的是，我们找到了另一个利用数组 x 生成的长度为 n + 1 的数组 a0, a1, … , an。<br>数组 a 的正式描述如下(带括号的符号是下标)：</font>
 
 - <font size=2> a0 = 0</font>
-- <font size=2> 对于 1 ≤ i ≤ n，ai = x~(i−1)modk~ + a~i-1~ (~之间内容是下标)</font>
+- <font size=2> 对于 1 ≤ i ≤ n，ai = x((i−1) mod k) + a(i-1)</font>
 
 <font size=2> 例如，当 x = [1, 2, 3] 并且 n = 5 时，生成数组 a 的过程如下：</font>
 - <font size=2> a0 = 0</font>
-- <font size=2> a1 = x~0mod3~ + a0 = x0 + 0 = 1</font>
-- <font size=2> a2 = x~1mod3~ + a1 = x1 + 1 = 3</font>
-- <font size=2> a3 = x~2mod3~ + a2 = x2 + 3 = 6</font>
-- <font size=2> a4 = x~3mod3~ + a3 = x0 + 6 = 7</font>
-- <font size=2> a5 = x~4mod3~ + a4 = x1 + 7 = 9</font>
+- <font size=2> a1 = x(0 mod 3) + a0 = x0 + 0 = 1</font>
+- <font size=2> a2 = x(1 mod 3) + a1 = x1 + 1 = 3</font>
+- <font size=2> a3 = x(2 mod 3) + a2 = x2 + 3 = 6</font>
+- <font size=2> a4 = x(3 mod 3) + a3 = x0 + 6 = 7</font>
+- <font size=2> a5 = x(4 mod 3) + a4 = x1 + 7 = 9</font>
 
 <font size=2> 所以，当 x = [1, 2, 3] 并且 n = 5 时，可以生成数组 a = [0, 1, 3, 6, 7, 9]。<br>现在，我们希望你通过数组 a 找回数组 x 。<br>更具体地说，已知 1 ≤ k ≤ n，请你找到所有可能的 k 值，即数组 x 的所有可能长度。</font>
 
