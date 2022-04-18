@@ -76,12 +76,12 @@
 - <font size=2>这是一道模拟题，需要仔细读题干，先找出如何利用 a[0~n] 求出 x[i]，进而去求解所有可能长度</font>
 
 - <font size=2>假设 k = 3，那么 xi 的求解过程如下所示：
-  - x0 = a1 - a0   i = 1
-  - x1 = a2 - a1   i = 2
-  - x2 = a3 - a2   i = 3
-  - x0 = a4 - a3   i = 4
-  - x1 = a5 - a4   i = 5
-  - x2 = a6 - a5   i = 6
+  - x0 = a1 - a0 &emsp;&emsp;&emsp;i = 1
+  - x1 = a2 - a1 &emsp;&emsp;&emsp;i = 2
+  - x2 = a3 - a2 &emsp;&emsp;&emsp;i = 3
+  - x0 = a4 - a3 &emsp;&emsp;&emsp;i = 4
+  - x1 = a5 - a4 &emsp;&emsp;&emsp;i = 5
+  - x2 = a6 - a5 &emsp;&emsp;&emsp;i = 6
 </font>
 
 - <font size=2>可以发现 xi 的值是以 k 为周期循环的，所以可以从第二个周期开始(即 i = k + 1)，依次比较a[i] - a[i - 1] 和 a[i - k] - a[i - 1 - k] 的值是否相同，如果相同说明此时枚举的 k 值成立，加入到 ans 中，否则不成立。</font>
