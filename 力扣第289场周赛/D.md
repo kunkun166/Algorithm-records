@@ -8,7 +8,7 @@
 
 <font size=2> 给你一棵 树（即一个连通、无向、无环图），根节点是节点 0 ，这棵树由编号从 0 到 n - 1 的 n 个节点组成。用下标从 0 开始、长度为 n 的数组 parent 来表示这棵树，其中 parent[i] 是节点 i 的父节点，由于节点 0 是根节点，所以 parent[0] == -1 。<br>另给你一个字符串 s ，长度也是 n ，其中 s[i] 表示分配给节点 i 的字符。<br>请你找出路径上任意一对相邻节点都没有分配到相同字符的 最长路径 ，并返回该路径的长度。</font>
 
-<font size=2>示例 1：</font>
+<font size=2>示例 1：<br></font>
 ![hh](https://github.com/kunkun166/Algorithm-records/blob/leetcodecup/%E6%8F%92%E5%9B%BE/03.png)
 ```
 输入：parent = [-1,0,0,1,1,2], s = "abacbe"
@@ -17,7 +17,7 @@
 可以证明不存在满足上述条件且比 3 更长的路径。 
 ```
 
-<font size=2>示例 2：</font>
+<font size=2>示例 2：<br></font>
 ![hh](https://github.com/kunkun166/Algorithm-records/blob/leetcodecup/%E6%8F%92%E5%9B%BE/04.png)
 ```
 输入：parent = [-1,0,0,0], s = "aabc"
