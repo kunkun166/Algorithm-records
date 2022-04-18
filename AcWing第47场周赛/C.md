@@ -1,85 +1,123 @@
-##### 2022/4/17
+##### 2022/4/18
 
-### 数字母
+### 找回数组
 
-[https://www.acwing.com/problem/content/4402/](https://www.acwing.com/problem/content/4402/)
+[https://www.acwing.com/problem/content/4404/](https://www.acwing.com/problem/content/4404/)
 
 ### 题目描述
 
-<font size=2> 给定一个仅包含小写字母的集合，请你判断集合中不同字母的数量。</font>
+<font size=2> 有一个长度为 k 的整数数组 x0, x1, … , xk−1。<br>不幸的是，这个数组已经丢失了，我们甚至不知道 k 的具体值。<br>幸运的是，我们找到了另一个利用数组 x 生成的长度为 n + 1 的数组 a0, a1, … , an。<br>数组 a 的正式描述如下：</font>
 
-<font size=2> **输入格式**<br>输入一行字符串，用以描述这个小写字母集合。字符串以 `{` 开始，以 `}` 结束，中间列出所有集合中包含的小写字母，小写字母两两之间用逗号 `,` 加空格 `` 隔开。</font>
+- <font size=2> a0 = 0</font>
+- <font size=2> 对于 1 ≤ i ≤ n，ai = x~(i−1)modk~ + a~i-1~ (~之间内容是下标)</font>
 
-<font size=2> **输出格式**<br>一个整数，表示集合中不同字母的数量。
-</font>
+<font size=2> 例如，当 x = [1, 2, 3] 并且 n = 5 时，生成数组 a 的过程如下：</font>
+- <font size=2> a0 = 0</font>
+- <font size=2> a1 = x~0mod3~ + a0 = x0 + 0 = 1</font>
+- <font size=2> a2 = x~1mod3~ + a1 = x1 + 1 = 3</font>
+- <font size=2> a3 = x~2mod3~ + a2 = x2 + 3 = 6</font>
+- <font size=2> a4 = x~3mod3~ + a3 = x0 + 6 = 7</font>
+- <font size=2> a5 = x~4mod3~ + a4 = x1 + 7 = 9</font>
 
-<font size=2> **数据范围**<br>前5个测试点满足，集合中包含的字母数量在 [0,10] 范围内。<br>所有测试点满足，集合中包含的字母数量在 [0,333] 范围内。
-</font>
+<font size=2> 所以，当 x = [1, 2, 3] 并且 n = 5 时，可以生成数组 a = [0, 1, 3, 6, 7, 9]。<br>现在，我们希望你通过数组 a 找回数组 x 。<br>更具体地说，已知 1 ≤ k ≤ n，请你找到所有可能的 k 值，即数组 x 的所有可能长度。</font>
+
+<font size=2> **输入格式**<br>第一行包含整数 n。<br>第二行包含 n 个整数 a1, a2, … , an。<br>注意，由于 a0 一定等于 0，所以在输入中并未给出。</font>
+
+<font size=2> **输出格式**<br>第一行输出一个整数 l，表示数组 x 的所有可能长度的数量。<br>第二行按升序输出 l 个整数，表示数组 x 的所有可能长度。</font>
+
+<font size=2> **数据范围**<br>前四个测试点满足 1 ≤ n ≤ 5，<br>所以测试点满足 1 ≤ n ≤ 1000，1 ≤ ai ≤ 106。</font>
 
 <font size=2> **输入样例1：**</font>
 
 ```
-{a, b, c}
+5
+1 2 3 4 5
 ```
 
 <font size=2> **输出样例1：**</font>
 
 ```
-3
+5
+1 2 3 4 5
 ```
 
 <font size=2> **输入样例2：**</font>
 
 ```
-{b, a, b, a}
+5
+1 3 5 6 8
 ```
 
 <font size=2> **输出样例2：**</font>
 
 ```
 2
+3 5
 ```
 
 <font size=2> **输入样例3：**</font>
 
 ```
-{}
+3
+1 5 3
 ```
 
 <font size=2> **输出样例3：**</font>
 
 ```
-0
+1
+3
 ```
 
 ### 题解
 
 #### 方法一
 
-- <font size=2>这道题考察了Java中对字符串处理的熟悉程度</font>
+- <font size=2>这道题是一道模拟题，需要仔细读题干，先找出如何利用 a[0~n] 求出 x[i]，进而去求解所有可能长度</font>
 
-- <font size=2>做法就是挨个扫描每个字符，如果是小写字母就加入到HashSet中，利用HashSet的无序且不重复性即可得到答案，即set.size()</font>
+- <font size=2>假设 k = 3，那么 xi 的求解过程如下所示：
+  - x0 = a1 - a0   i = 1
+  - x1 = a2 - a1   i = 2
+  - x2 = a3 - a2   i = 3
+  - x0 = a4 - a3   i = 4
+  - x1 = a5 - a4   i = 5
+  - x2 = a6 - a5   i = 6
+</font>
+
+- <font size=2>可以发现 xi 的值是以 k 为周期循环的，所以可以从第二个周期开始(即 i = k + 1)，比较a[i] - a[i - 1] 和 a[i - k] - a[i - 1 - k] 的值是否相同，如果相同说明此时枚举的 k 值成立，加入到 ans 中，否则不成立。</font>
 
 #### AC代码
 
 ```
 public class Main {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        String str = sc.nextLine();
-        char[] ch = str.toCharArray();
-        HashSet<Character> set = new HashSet<>();
-        for (int i = 1; i < ch.length - 1; i++) {
-            if (ch[i] >= 'a' && ch[i] <= 'z') {
-                set.add(ch[i]);
+        int n = sc.nextInt();
+        
+        int[] a = new int[n + 1];
+        for (int i = 1; i <= n; i++) a[i] = sc.nextInt();
+        
+        ArrayList<Integer> ans = new ArrayList<>();
+        for(int k = 1; k <= n; k++) {
+            boolean flag = true;
+            for(int i = k + 1; i <= n; i++) {
+                if(a[i] - a[i - 1] != a[i - k] - a[i - 1 - k]) {
+                    flag = false;
+                    break;
+                }
             }
+            if(flag == true) ans.add(k);
         }
-        System.out.print(set.size());
+        
+        System.out.println(ans.size());
+
+        for(int i = 0; i < ans.size(); i++) System.out.print(ans.get(i) + " ");
+        
     }
 }
 ```
 
 #### 复杂度分析
 
-- 时间复杂度：O(n)，n是字符串的长度
-- 空间复杂度：O(n)，需要将字符串转为字符数组
+- 时间复杂度：O(n^2)，n是a[]数组的长度
+- 空间复杂度：O(n)
