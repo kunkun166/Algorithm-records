@@ -1,6 +1,6 @@
-##### 2022/4/18
+##### 2022/4/21
 
-### 计算字符串的数字和(力扣第6070题)
+### 计算字符串的数字和
 
 [https://leetcode-cn.com/problems/calculate-digit-sum-of-a-string/](https://leetcode-cn.com/problems/calculate-digit-sum-of-a-string/)
 
@@ -51,21 +51,36 @@ s 变为 "0" + "0" + "0" = "000" ，其长度等于 k ，所以返回 "000" 。
 
 ### 题解
 
-#### 方法一、动态规划
+#### 方法一、StringBuilder
 
-- <font size=2></font>
-- <font size=2></font>
-- <font size=2></font>
-- <font size=2></font>
-- <font size=2></font>
+- <font size=2>这道题考察了 Java 中对字符串的处理手段，不得不说 StringBuilder 是真的方便</font>
+- <font size=2>首先如果字符串 `s` 长度大于 `k` ，就需要以 `k` 为步长计算这一步中包含的数的和</font>
+- <font size=2>计算 `k` 步长内的数字和对应代码里中间两个 `for` 循环，非常巧妙的解决了最后几个数可能不够 `k` 步长的问题</font>
+- <font size=2>每计算一段步长和，就接到 `sb` 中，都算完后把 `sb` 转换为字符串重新赋给 `s` 继续判断</font>
 
 #### AC代码
 
 ```
-
+class Solution {
+    public String digitSum(String s, int k) {
+        while (s.length() > k) {
+            int n = s.length();
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < n; i += k) {
+                int sum = 0;
+                for (int j = 0; j < k && i + j < n; j++) {
+                    sum += s.charAt(i + j) - '0';
+                }
+                sb.append(sum);
+            }
+            s = sb.toString();
+        }
+        return s;
+    }
+}
 ```
 
 #### 复杂度分析
 
-- 时间复杂度：O(n^2)，
-- 空间复杂度：O(n)，
+- 时间复杂度：O(n^2)
+- 空间复杂度：O(1)
