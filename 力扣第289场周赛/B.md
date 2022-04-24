@@ -1,6 +1,6 @@
-##### 2022/4/18
+##### 2022/4/22
 
-### 完成所有任务需要的最少轮数(力扣第6071题)
+### 完成所有任务需要的最少轮数
 
 [https://leetcode-cn.com/problems/minimum-rounds-to-complete-all-tasks/](https://leetcode-cn.com/problems/minimum-rounds-to-complete-all-tasks/)
 
@@ -31,8 +31,8 @@
 
 <font size=2>提示：</font>
 
-- `1 <= tasks.length <= 105`
-- `1 <= tasks[i] <= 109`
+- `1 <= tasks.length <= 10^5`
+- `1 <= tasks[i] <= 10^9`
 
 ### 题解
 
